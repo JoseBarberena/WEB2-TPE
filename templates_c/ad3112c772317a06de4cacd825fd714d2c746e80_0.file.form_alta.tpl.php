@@ -1,8 +1,32 @@
+<?php
+/* Smarty version 4.3.4, created on 2023-10-16 17:00:37
+  from 'C:\XAAMP\htdocs\Web2-2023\TPE-WEB2\templates\form_alta.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.3.4',
+  'unifunc' => 'content_652d5015304ef6_01050776',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'ad3112c772317a06de4cacd825fd714d2c746e80' => 
+    array (
+      0 => 'C:\\XAAMP\\htdocs\\Web2-2023\\TPE-WEB2\\templates\\form_alta.tpl',
+      1 => 1697468427,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.tpl' => 1,
+  ),
+),false)) {
+function content_652d5015304ef6_01050776 (Smarty_Internal_Template $_smarty_tpl) {
+?> 
+ <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
  
- {include file="header.tpl"}
-
- {* ---Formulario para agregar ventas --- *}
-
  <div class="dropdown d-flex justify-content-between my-4">
   
  <div>
@@ -24,12 +48,23 @@
          <label class="visually-hidden" for="specificSizeSelect">Vendedor</label>
         
 
-         <select type="number" class="form-select" id="priority" name="vendedor" value="{$seller->id_Vendedor}">
+         <select type="number" class="form-select" id="priority" name="vendedor" value="<?php echo $_smarty_tpl->tpl_vars['seller']->value->id_Vendedor;?>
+">
         
-           {foreach from=$sellers item=$seller}
-             <option value='{$seller->id_Vendedor}'>{$seller->id_Vendedor} - {$seller->Vendedor}</option>
+           <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['sellers']->value, 'seller');
+$_smarty_tpl->tpl_vars['seller']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['seller']->value) {
+$_smarty_tpl->tpl_vars['seller']->do_else = false;
+?>
+             <option value='<?php echo $_smarty_tpl->tpl_vars['seller']->value->id_Vendedor;?>
+'><?php echo $_smarty_tpl->tpl_vars['seller']->value->id_Vendedor;?>
+ - <?php echo $_smarty_tpl->tpl_vars['seller']->value->Vendedor;?>
+</option>
             
-           {/foreach}
+           <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
          </select>
        </div>
 
@@ -66,4 +101,5 @@
       </div>
 
 
-      
+      <?php }
+}
